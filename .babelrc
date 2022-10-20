@@ -1,0 +1,22 @@
+{
+  "presets": [
+    "react-native",
+    "module:metro-react-native-babel-preset"
+  ],
+  "sourceMaps": true,
+  "plugins": [
+    "flow",
+    "typescript",
+    "transform-react-class-displayname",
+    "inline-package-json",
+    "transform-inline-environment-variables",
+    "@babel/plugin-proposal-nullish-coalescing-operator"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
+}
