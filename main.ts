@@ -33,8 +33,9 @@ function main() {
 
   const nodeIdMappingFileName = "node_ids.txt";
   const nodeIdMappingStream = fs.createWriteStream(nodeIdMappingFileName);
+  nodeIdMappingStream.write("id,name\n");
   for (const deps of parsedDepsInfo.nodeIdsAndNamesMapping) {
-    nodeIdMappingStream.write(`${deps.id} ${deps.name}\n`);
+    nodeIdMappingStream.write(`${deps.id},${deps.name}\n`);
   }
   nodeIdMappingStream.end();
 }
