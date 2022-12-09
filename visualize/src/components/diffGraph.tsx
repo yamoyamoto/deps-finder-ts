@@ -43,6 +43,21 @@ export const App = () => {
               height: 2,
               size: 10,
             },
+            {
+              id: "5",
+              height: 2,
+              size: 10,
+            },
+            {
+              id: "6",
+              height: 2,
+              size: 10,
+            },
+            {
+              id: "7",
+              height: 2,
+              size: 10,
+            },
           ],
           links: [
             {
@@ -59,14 +74,38 @@ export const App = () => {
               source: "2",
               target: "4",
               style: {
-                strokeDasharray: "5 7",
+                strokeDasharray: "5 7", // nivo依存
+              },
+              color: "blue",
+            },
+            {
+              source: "6",
+              target: "5",
+              style: {
+                strokeDasharray: "5 7", // nivo依存
+              },
+              color: "blue",
+            },
+            {
+              source: "6",
+              target: "3",
+              style: {
+                strokeDasharray: "5 7", // nivo依存
+              },
+              color: "blue",
+            },
+            {
+              source: "7",
+              target: "1",
+              style: {
+                strokeDasharray: "5 7", // nivo依存
               },
               color: "blue",
             },
           ],
         }}
-        width={100}
-        height={100}
+        width={1000}
+        height={1000}
         nodeSize={(node: any) => {
           return node.size;
         }}
@@ -100,28 +139,22 @@ export const App = () => {
               })}
               r={to([n.animated.size], size => size / 2)}
               fill={n.animated.color}
-              // strokeWidth={animatedProps.borderWidth}
-              // stroke={animatedProps.borderColor}
-              // opacity={animatedProps.opacity}
-              // onClick={onClick ? event => onClick(node, event) : undefined}
-              // onMouseEnter={onMouseEnter ? event => onMouseEnter(node, event) : undefined}
-              // onMouseMove={onMouseMove ? event => onMouseMove(node, event) : undefined}
-              // onMouseLeave={onMouseLeave ? event => onMouseLeave(node, event) : undefined}
+              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
+              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
+              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
+              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
             ></animated.circle>
             <animated.circle
               data-testid={`node.${n.node.id}`}
               transform={to([n.node.x, n.node.y, n.animated.scale], (x, y, scale) => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
-              r={n.node.size / 2 - 2}
+              r={n.node.size / 3.5}
               fill="red"
-              // strokeWidth={animatedProps.borderWidth}
-              // stroke={animatedProps.borderColor}
-              // opacity={animatedProps.opacity}
-              // onClick={onClick ? event => onClick(node, event) : undefined}
-              // onMouseEnter={onMouseEnter ? event => onMouseEnter(node, event) : undefined}
-              // onMouseMove={onMouseMove ? event => onMouseMove(node, event) : undefined}
-              // onMouseLeave={onMouseLeave ? event => onMouseLeave(node, event) : undefined}
+              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
+              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
+              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
+              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
             ></animated.circle>
             </>
         }}
