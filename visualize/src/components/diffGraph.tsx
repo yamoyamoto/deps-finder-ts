@@ -13,7 +13,7 @@ export const App = () => {
               <marker id="mu_us" viewBox="0 0 10 10" refX="7" refY="5"
                       markerWidth="6" markerHeight="6" fill="blue"
                       orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#eab942" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="black" />
               </marker>
             </defs>;
           },
@@ -70,44 +70,41 @@ export const App = () => {
             {
               source: "1",
               target: "2",
-              color: "red",
+              color: "black",
             },
             {
               source: "2",
               target: "3",
-              color: "green",
+              color: "black",
             },
             {
               source: "2",
               target: "4",
               style: {
-                strokeDasharray: "5 7", // nivo依存
+                strokeDasharray: "1 2", // nivo依存
               },
-              color: "blue",
+              color: "green",
             },
             {
               source: "6",
               target: "5",
               style: {
-                strokeDasharray: "5 7", // nivo依存
+                strokeDasharray: "1 2", // nivo依存
               },
-              color: "blue",
+              color: "green",
             },
             {
               source: "6",
               target: "3",
-              style: {
-                strokeDasharray: "5 7", // nivo依存
-              },
-              color: "blue",
+              color: "black",
             },
             {
               source: "7",
               target: "1",
               style: {
-                strokeDasharray: "5 7", // nivo依存
+                strokeDasharray: "1 2", // nivo依存
               },
-              color: "blue",
+              color: "red",
             },
           ],
         }}
@@ -127,7 +124,7 @@ export const App = () => {
               style={{ mixBlendMode: l.animated.blendMode }}
               strokeWidth={1}
               strokeLinecap="round"
-              strokeDasharray="1 2"
+              strokeDasharray={l.link.data.style?.strokeDasharray ?? null}
               opacity={l.animated.opacity}
               x1={l.link.source.x}
               y1={l.link.source.y}
