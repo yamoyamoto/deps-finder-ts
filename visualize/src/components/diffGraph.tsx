@@ -1,26 +1,42 @@
 import { animated } from '@react-spring/web'
 import {Network} from "@nivo/network";
 
+
 export const App = () => {
   return (
     <div>
+
       <Network
+        layers={[
+          () => {
+            return <defs>
+              <marker id="mu_us" viewBox="0 0 10 10" refX="7" refY="5"
+                      markerWidth="6" markerHeight="6" fill="blue"
+                      orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#eab942" />
+              </marker>
+            </defs>;
+          },
+          "links",
+          "nodes",
+          "annotations",
+        ]}
         data={{
           nodes: [
             {
               id: "1",
               height: 2,
-              size: 5,
+              size: 10,
             },
             {
               id: "2",
               height: 2,
-              size: 8,
+              size: 10,
             },
             {
               id: "3",
               height: 2,
-              size: 15,
+              size: 10,
             },
             {
               id: "4",
@@ -65,15 +81,20 @@ export const App = () => {
               style={{ mixBlendMode: l.animated.blendMode }}
               strokeWidth={1}
               strokeLinecap="round"
-              strokeDasharray="3 3"
+              strokeDasharray="1 2"
               opacity={l.animated.opacity}
               x1={l.link.source.x}
               y1={l.link.source.y}
-              x2={l.link.target.x}
-              y2={l.link.target.y}
+              x2={calcPosition(l.link.target.x, l.link.source.x)}
+              y2={calcPosition(l.link.target.y, l.link.source.y)}
+              markerEnd="url(#mu_us)"
             ></animated.line>}
         }
       ></Network>
     </div>
   );
 };
+
+function calcPosition(s: number, t: number){
+  return (3*s + t) / 4
+}
