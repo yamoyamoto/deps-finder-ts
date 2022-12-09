@@ -1,6 +1,5 @@
-import * as react from "react";
-import { Network, ResponsiveNetwork, InputNode } from "@nivo/network";
-import * as network from "@nivo/network";
+import { animated } from '@react-spring/web'
+import {Network} from "@nivo/network";
 
 export const App = () => {
   return (
@@ -33,14 +32,20 @@ export const App = () => {
             {
               source: "1",
               target: "2",
+              color: "red",
             },
             {
               source: "2",
               target: "3",
+              color: "green",
             },
             {
               source: "2",
               target: "4",
+              style: {
+                strokeDasharray: "5 7",
+              },
+              color: "blue",
             },
           ],
         }}
@@ -49,6 +54,25 @@ export const App = () => {
         nodeSize={(node: any) => {
           return node.size;
         }}
+        linkColor={(link: any) =>{
+          return link.data.color;
+        }}
+        linkComponent={(l: any) =>{
+          console.log(l)
+          return <animated.line
+              data-testid={`link.${l.link.id}`}
+              stroke={l.animated.color}
+              style={{ mixBlendMode: l.animated.blendMode }}
+              strokeWidth={1}
+              strokeLinecap="round"
+              strokeDasharray="3 3"
+              opacity={l.animated.opacity}
+              x1={l.link.source.x}
+              y1={l.link.source.y}
+              x2={l.link.target.x}
+              y2={l.link.target.y}
+            ></animated.line>}
+        }
       ></Network>
     </div>
   );
