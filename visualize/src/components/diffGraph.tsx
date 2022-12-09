@@ -27,36 +27,43 @@ export const App = () => {
               id: "1",
               height: 2,
               size: 10,
+              color: "green",
             },
             {
               id: "2",
               height: 2,
               size: 10,
+              color: "red",
             },
             {
               id: "3",
               height: 2,
               size: 10,
+              color: "green",
             },
             {
               id: "4",
               height: 2,
               size: 10,
+              color: "green",
             },
             {
               id: "5",
               height: 2,
               size: 10,
+              color: "red",
             },
             {
               id: "6",
               height: 2,
               size: 10,
+              color: "green",
             },
             {
               id: "7",
               height: 2,
               size: 10,
+              color: "red",
             },
           ],
           links: [
@@ -138,7 +145,7 @@ export const App = () => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
               r={to([n.animated.size], size => size / 2)}
-              fill={n.animated.color}
+              fill={n.node.data.color}
               onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
               onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
               onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
@@ -150,7 +157,7 @@ export const App = () => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
               r={n.node.size / 3.5}
-              fill="red"
+              fill="black"
               onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
               onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
               onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
