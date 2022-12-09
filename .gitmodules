@@ -7,3 +7,6 @@
 [submodule "notebooks/graphwave"]
 	path = notebooks/graphwave
 	url = https://github.com/yamoyamoto/graphwave.git
+[submodule "nivo"]
+	path = nivo
+	url = https://github.com/plouc/nivo.git
