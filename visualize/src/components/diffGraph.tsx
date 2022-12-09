@@ -1,4 +1,4 @@
-import { animated } from '@react-spring/web'
+import { animated, to } from '@react-spring/web'
 import {Network} from "@nivo/network";
 
 
@@ -90,6 +90,41 @@ export const App = () => {
               markerEnd="url(#mu_us)"
             ></animated.line>}
         }
+        nodeComponent={(n: any)=>{
+          console.log(n);
+          return <>
+            <animated.circle
+              data-testid={`node.${n.node.id}`}
+              transform={to([n.node.x, n.node.y, n.animated.scale], (x, y, scale) => {
+                return `translate(${x},${y}) scale(${scale})`
+              })}
+              r={to([n.animated.size], size => size / 2)}
+              fill={n.animated.color}
+              // strokeWidth={animatedProps.borderWidth}
+              // stroke={animatedProps.borderColor}
+              // opacity={animatedProps.opacity}
+              // onClick={onClick ? event => onClick(node, event) : undefined}
+              // onMouseEnter={onMouseEnter ? event => onMouseEnter(node, event) : undefined}
+              // onMouseMove={onMouseMove ? event => onMouseMove(node, event) : undefined}
+              // onMouseLeave={onMouseLeave ? event => onMouseLeave(node, event) : undefined}
+            ></animated.circle>
+            <animated.circle
+              data-testid={`node.${n.node.id}`}
+              transform={to([n.node.x, n.node.y, n.animated.scale], (x, y, scale) => {
+                return `translate(${x},${y}) scale(${scale})`
+              })}
+              r={n.node.size / 2 - 2}
+              fill="red"
+              // strokeWidth={animatedProps.borderWidth}
+              // stroke={animatedProps.borderColor}
+              // opacity={animatedProps.opacity}
+              // onClick={onClick ? event => onClick(node, event) : undefined}
+              // onMouseEnter={onMouseEnter ? event => onMouseEnter(node, event) : undefined}
+              // onMouseMove={onMouseMove ? event => onMouseMove(node, event) : undefined}
+              // onMouseLeave={onMouseLeave ? event => onMouseLeave(node, event) : undefined}
+            ></animated.circle>
+            </>
+        }}
       ></Network>
     </div>
   );
