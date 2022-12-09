@@ -27,25 +27,25 @@ export const App = () => {
               id: "1",
               height: 2,
               size: 10,
-              color: "green",
+              color: "black",
             },
             {
               id: "2",
               height: 2,
               size: 10,
-              color: "red",
+              color: "green",
             },
             {
               id: "3",
               height: 2,
               size: 10,
-              color: "green",
+              color: "black",
             },
             {
               id: "4",
               height: 2,
               size: 10,
-              color: "green",
+              color: "black",
             },
             {
               id: "5",
@@ -57,7 +57,7 @@ export const App = () => {
               id: "6",
               height: 2,
               size: 10,
-              color: "green",
+              color: "black",
             },
             {
               id: "7",
@@ -160,6 +160,13 @@ export const App = () => {
               onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
               onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
             ></animated.circle>
+            <animated.text
+              x={n.node.x + 7}
+              y={n.node.y}
+              fontSize="10px"
+            >
+              {n.node.id}
+            </animated.text>
             </>
         }}
       ></Network>
