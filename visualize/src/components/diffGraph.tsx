@@ -1,5 +1,6 @@
 import { animated, to } from '@react-spring/web'
 import {Network} from "@nivo/network";
+import {networkNodeInputData, networkLinkInputData} from "../data/network";
 
 
 export const App = () => {
@@ -22,91 +23,8 @@ export const App = () => {
           "annotations",
         ]}
         data={{
-          nodes: [
-            {
-              id: "1",
-              height: 2,
-              size: 10,
-              color: "black",
-            },
-            {
-              id: "2",
-              height: 2,
-              size: 10,
-              color: "green",
-            },
-            {
-              id: "3",
-              height: 2,
-              size: 10,
-              color: "black",
-            },
-            {
-              id: "4",
-              height: 2,
-              size: 10,
-              color: "black",
-            },
-            {
-              id: "5",
-              height: 2,
-              size: 10,
-              color: "red",
-            },
-            {
-              id: "6",
-              height: 2,
-              size: 10,
-              color: "black",
-            },
-            {
-              id: "7",
-              height: 2,
-              size: 10,
-              color: "red",
-            },
-          ],
-          links: [
-            {
-              source: "1",
-              target: "2",
-              color: "black",
-            },
-            {
-              source: "2",
-              target: "3",
-              color: "black",
-            },
-            {
-              source: "2",
-              target: "4",
-              style: {
-                strokeDasharray: "1 2", // nivo依存
-              },
-              color: "green",
-            },
-            {
-              source: "6",
-              target: "5",
-              style: {
-                strokeDasharray: "1 2", // nivo依存
-              },
-              color: "green",
-            },
-            {
-              source: "6",
-              target: "3",
-              color: "black",
-            },
-            {
-              source: "7",
-              target: "1",
-              style: {
-                strokeDasharray: "1 2", // nivo依存
-              },
-              color: "red",
-            },
-          ],
+          nodes: networkNodeInputData,
+          links: networkLinkInputData
         }}
         width={1000}
         height={1000}
@@ -133,27 +51,45 @@ export const App = () => {
               markerEnd="url(#mu_us)"
             ></animated.line>}
         }
-        nodeComponent={(n: any)=>{
+        nodeComponent={(n)=>{
           console.log(n);
+          const redNodeSize = n.node.data.size;
+          const greenNodeSize = redNodeSize * (1 - n.node.data.deletionRate);
+          const baseNodeSize = greenNodeSize * (1 - n.node.data.additionRate)
           return <>
+            {/* 「削除」用のノード */}
             <animated.circle
               data-testid={`node.${n.node.id}`}
               transform={to([n.node.x, n.node.y, n.animated.scale], (x, y, scale) => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
-              r={to([n.animated.size], size => size / 2)}
-              fill={n.node.data.color}
+              r={redNodeSize}
+              fill="red"
               onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
               onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
               onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
               onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
             ></animated.circle>
+            {/* 「追加」用のノード */}
             <animated.circle
               data-testid={`node.${n.node.id}`}
               transform={to([n.node.x, n.node.y, n.animated.scale], (x, y, scale) => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
-              r={n.node.size / 3.5}
+              r={greenNodeSize}
+              fill="green"
+              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
+              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
+              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
+              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+            ></animated.circle>
+            {/* ベースのノード */}
+            <animated.circle
+              data-testid={`node.${n.node.id}`}
+              transform={to([n.node.x, n.node.y, n.animated.scale], (x, y, scale) => {
+                return `translate(${x},${y}) scale(${scale})`
+              })}
+              r={baseNodeSize}
               fill="black"
               onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
               onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
