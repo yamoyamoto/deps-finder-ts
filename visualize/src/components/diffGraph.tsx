@@ -1,7 +1,7 @@
 import { animated, to } from '@react-spring/web'
 import {Network} from "@nivo/network";
 import {networkNodeInputData, networkLinkInputData} from "../data/network";
-
+import { BasicTooltip } from '@nivo/tooltip';
 
 export const App = () => {
   return (
@@ -25,6 +25,9 @@ export const App = () => {
         data={{
           nodes: networkNodeInputData,
           links: networkLinkInputData
+        }}
+        nodeTooltip={(node)=>{
+          return <BasicTooltip id={node.node.data.name} enableChip={true} />
         }}
         width={1000}
         height={1000}

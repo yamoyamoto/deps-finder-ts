@@ -1,6 +1,7 @@
 
 export type NetworkNodeInput = {
   id: string
+  name: string
   size: number
   color: string
   additionRate: number
@@ -21,6 +22,7 @@ type NetworkLinkStyleInput = {
 export const networkNodeInputData: NetworkNodeInput[] = [
   {
     id: "1",
+    name: "1",
     size: 5,
     color: "black",
     additionRate: 0,
@@ -28,6 +30,7 @@ export const networkNodeInputData: NetworkNodeInput[] = [
   },
   {
     id: "2",
+    name: "2",
     size: 5,
     color: "green",
     additionRate: 0.2,
@@ -35,6 +38,7 @@ export const networkNodeInputData: NetworkNodeInput[] = [
   },
   {
     id: "3",
+    name: "Node 3\n+112\n-58",
     size: 5,
     color: "black",
     additionRate: 0.2,
@@ -42,6 +46,7 @@ export const networkNodeInputData: NetworkNodeInput[] = [
   },
   {
     id: "4",
+    name: "4",
     size: 5,
     color: "black",
     additionRate: 0,
@@ -49,6 +54,7 @@ export const networkNodeInputData: NetworkNodeInput[] = [
   },
   {
     id: "5",
+    name: "5",
     size: 5,
     color: "red",
     additionRate: 0.2,
@@ -56,6 +62,7 @@ export const networkNodeInputData: NetworkNodeInput[] = [
   },
   {
     id: "6",
+    name: "6",
     size: 5,
     color: "black",
     additionRate: 0.2,
@@ -63,6 +70,7 @@ export const networkNodeInputData: NetworkNodeInput[] = [
   },
   {
     id: "7",
+    name: "7",
     size: 5,
     color: "red",
     additionRate: 0,
