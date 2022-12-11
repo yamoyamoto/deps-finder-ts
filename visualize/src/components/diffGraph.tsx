@@ -1,6 +1,6 @@
 import { animated, to } from '@react-spring/web'
 import {Network} from "@nivo/network";
-import {networkNodeInputData, networkLinkInputData} from "../data/network";
+import {networkNodeInputData, networkLinkInputData} from "../data/nivo";
 import { BasicTooltip } from '@nivo/tooltip';
 
 export const App = () => {
@@ -37,15 +37,31 @@ export const App = () => {
         linkColor={(link: any) =>{
           return link.data.color;
         }}
-        linkComponent={(l: any) =>{
-          console.log(l)
+        linkComponent={(l) =>{
+          let fillColor: string;
+          let strokeDasharray: string;
+          switch (l.link.data.type){
+            case "add":
+              fillColor = "green";
+              strokeDasharray = "1 2";
+              break;
+            case "delete":
+              strokeDasharray = "1 2";
+              fillColor = "red";
+              break;
+            default:
+              fillColor = "black";
+              strokeDasharray = "";
+              break;
+          }
+
           return <animated.line
               data-testid={`link.${l.link.id}`}
-              stroke={l.animated.color}
+              stroke={fillColor}
               style={{ mixBlendMode: l.animated.blendMode }}
               strokeWidth={1}
               strokeLinecap="round"
-              strokeDasharray={l.link.data.style?.strokeDasharray ?? null}
+              strokeDasharray={strokeDasharray}
               opacity={l.animated.opacity}
               x1={l.link.source.x}
               y1={l.link.source.y}

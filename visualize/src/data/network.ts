@@ -1,23 +1,4 @@
-
-export type NetworkNodeInput = {
-  id: string
-  name: string
-  size: number
-  color: string
-  additionRate: number
-  deletionRate: number
-}
-
-export type NetworkLinkInput = {
-  source: string
-  target: string
-  color: string
-  style: NetworkLinkStyleInput
-}
-
-type NetworkLinkStyleInput = {
-  strokeDasharray: string
-}
+import {NetworkLinkInput, NetworkNodeInput} from "./types";
 
 export const networkNodeInputData: NetworkNodeInput[] = [
   {
@@ -82,6 +63,7 @@ export const networkLinkInputData: NetworkLinkInput[] = [
   {
     source: "1",
     target: "2",
+    type: "stable",
     color: "black",
     style: {
       strokeDasharray: "",
@@ -90,6 +72,7 @@ export const networkLinkInputData: NetworkLinkInput[] = [
   {
     source: "2",
     target: "3",
+    type: "stable",
     color: "black",
     style: {
       strokeDasharray: "",
@@ -98,6 +81,7 @@ export const networkLinkInputData: NetworkLinkInput[] = [
   {
     source: "2",
     target: "4",
+    type: "add",
     style: {
       strokeDasharray: "1 2",
     },
@@ -109,12 +93,14 @@ export const networkLinkInputData: NetworkLinkInput[] = [
     style: {
       strokeDasharray: "1 2",
     },
+    type: "add",
     color: "green",
   },
   {
     source: "6",
     target: "3",
     color: "black",
+    type: "stable",
     style: {
       strokeDasharray: "",
     },
@@ -122,6 +108,7 @@ export const networkLinkInputData: NetworkLinkInput[] = [
   {
     source: "7",
     target: "1",
+    type: "delete",
     color: "red",
     style: {
       strokeDasharray: "1 2",
