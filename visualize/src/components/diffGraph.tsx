@@ -8,6 +8,7 @@ export const App = () => {
     <div>
 
       <Network
+        distanceMin={10}
         layers={[
           () => {
             return <defs>
@@ -40,6 +41,7 @@ export const App = () => {
         linkComponent={(l) =>{
           let fillColor: string;
           let strokeDasharray: string;
+          console.log(l.link.data)
           switch (l.link.data.type){
             case "add":
               fillColor = "green";
@@ -71,7 +73,6 @@ export const App = () => {
             ></animated.line>}
         }
         nodeComponent={(n)=>{
-          console.log(n);
           const redNodeSize = n.node.data.size;
           const greenNodeSize = redNodeSize * (1 - n.node.data.deletionRate);
           const baseNodeSize = greenNodeSize * (1 - n.node.data.additionRate)
@@ -109,7 +110,7 @@ export const App = () => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
               r={baseNodeSize}
-              fill="black"
+              fill={n.node.data.color}
               onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
               onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
               onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
