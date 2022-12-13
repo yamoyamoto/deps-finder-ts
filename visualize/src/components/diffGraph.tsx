@@ -60,11 +60,9 @@ export const App = () => {
           return <animated.line
               data-testid={`link.${l.link.id}`}
               stroke={fillColor}
-              style={{ mixBlendMode: l.animated.blendMode }}
               strokeWidth={1}
               strokeLinecap="round"
               strokeDasharray={strokeDasharray}
-              opacity={l.animated.opacity}
               x1={l.link.source.x}
               y1={l.link.source.y}
               x2={calcPosition(l.link.target.x, l.link.source.x)}
@@ -85,10 +83,18 @@ export const App = () => {
               })}
               r={redNodeSize}
               fill="red"
-              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
-              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
-              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
-              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+              onClick={event => {
+                return n?.onClick ? n?.onClick(n.node, event) : undefined;
+              }}
+              onMouseEnter={event => {
+                return n?.onMouseEnter ? n?.onMouseEnter(n.node, event) : undefined;
+              }}
+              onMouseMove={event => {
+                return n?.onMouseMove ? n?.onMouseMove(n.node, event) : undefined;
+              }}
+              onMouseLeave={event => {
+                return n?.onMouseLeave ? n?.onMouseLeave(n.node, event) : undefined;
+              }}
             ></animated.circle>
             {/* 「追加」用のノード */}
             <animated.circle
@@ -98,10 +104,18 @@ export const App = () => {
               })}
               r={greenNodeSize}
               fill="green"
-              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
-              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
-              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
-              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+              onClick={event => {
+                return n?.onClick ? n?.onClick(n.node, event) : undefined;
+              }}
+              onMouseEnter={event => {
+                return n?.onMouseEnter ? n?.onMouseEnter(n.node, event) : undefined;
+              }}
+              onMouseMove={event => {
+                return n?.onMouseMove ? n?.onMouseMove(n.node, event) : undefined;
+              }}
+              onMouseLeave={event => {
+                return n?.onMouseLeave ? n?.onMouseLeave(n.node, event) : undefined;
+              }}
             ></animated.circle>
             {/* ベースのノード */}
             <animated.circle
@@ -111,10 +125,18 @@ export const App = () => {
               })}
               r={baseNodeSize}
               fill={n.node.data.color}
-              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
-              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
-              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
-              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+              onClick={event => {
+                return n?.onClick ? n?.onClick(n.node, event) : undefined;
+              }}
+              onMouseEnter={event => {
+                return n?.onMouseEnter ? n?.onMouseEnter(n.node, event) : undefined;
+              }}
+              onMouseMove={event => {
+                return n?.onMouseMove ? n?.onMouseMove(n.node, event) : undefined;
+              }}
+              onMouseLeave={event => {
+                return n?.onMouseLeave ? n?.onMouseLeave(n.node, event) : undefined;
+              }}
             ></animated.circle>
             <animated.text
               x={n.node.x + 7}
