@@ -1,6 +1,6 @@
 import { animated, to } from '@react-spring/web'
 import {Network} from "@nivo/network";
-import {networkNodeInputData, networkLinkInputData} from "../data/network";
+import {networkNodeInputData, networkLinkInputData} from "../data/nivo";
 import { BasicTooltip } from '@nivo/tooltip';
 
 export const App = () => {
@@ -8,6 +8,7 @@ export const App = () => {
     <div>
 
       <Network
+        distanceMin={10}
         layers={[
           () => {
             return <defs>
@@ -37,16 +38,31 @@ export const App = () => {
         linkColor={(link: any) =>{
           return link.data.color;
         }}
-        linkComponent={(l: any) =>{
-          console.log(l)
+        linkComponent={(l) =>{
+          let fillColor: string;
+          let strokeDasharray: string;
+          console.log(l.link.data)
+          switch (l.link.data.type){
+            case "add":
+              fillColor = "green";
+              strokeDasharray = "1 2";
+              break;
+            case "delete":
+              strokeDasharray = "1 2";
+              fillColor = "red";
+              break;
+            default:
+              fillColor = "black";
+              strokeDasharray = "";
+              break;
+          }
+
           return <animated.line
               data-testid={`link.${l.link.id}`}
-              stroke={l.animated.color}
-              style={{ mixBlendMode: l.animated.blendMode }}
+              stroke={fillColor}
               strokeWidth={1}
               strokeLinecap="round"
-              strokeDasharray={l.link.data.style?.strokeDasharray ?? null}
-              opacity={l.animated.opacity}
+              strokeDasharray={strokeDasharray}
               x1={l.link.source.x}
               y1={l.link.source.y}
               x2={calcPosition(l.link.target.x, l.link.source.x)}
@@ -55,7 +71,6 @@ export const App = () => {
             ></animated.line>}
         }
         nodeComponent={(n)=>{
-          console.log(n);
           const redNodeSize = n.node.data.size;
           const greenNodeSize = redNodeSize * (1 - n.node.data.deletionRate);
           const baseNodeSize = greenNodeSize * (1 - n.node.data.additionRate)
@@ -68,10 +83,18 @@ export const App = () => {
               })}
               r={redNodeSize}
               fill="red"
-              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
-              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
-              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
-              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+              onClick={event => {
+                return n?.onClick ? n?.onClick(n.node, event) : undefined;
+              }}
+              onMouseEnter={event => {
+                return n?.onMouseEnter ? n?.onMouseEnter(n.node, event) : undefined;
+              }}
+              onMouseMove={event => {
+                return n?.onMouseMove ? n?.onMouseMove(n.node, event) : undefined;
+              }}
+              onMouseLeave={event => {
+                return n?.onMouseLeave ? n?.onMouseLeave(n.node, event) : undefined;
+              }}
             ></animated.circle>
             {/* 「追加」用のノード */}
             <animated.circle
@@ -81,10 +104,18 @@ export const App = () => {
               })}
               r={greenNodeSize}
               fill="green"
-              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
-              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
-              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
-              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+              onClick={event => {
+                return n?.onClick ? n?.onClick(n.node, event) : undefined;
+              }}
+              onMouseEnter={event => {
+                return n?.onMouseEnter ? n?.onMouseEnter(n.node, event) : undefined;
+              }}
+              onMouseMove={event => {
+                return n?.onMouseMove ? n?.onMouseMove(n.node, event) : undefined;
+              }}
+              onMouseLeave={event => {
+                return n?.onMouseLeave ? n?.onMouseLeave(n.node, event) : undefined;
+              }}
             ></animated.circle>
             {/* ベースのノード */}
             <animated.circle
@@ -93,11 +124,19 @@ export const App = () => {
                 return `translate(${x},${y}) scale(${scale})`
               })}
               r={baseNodeSize}
-              fill="black"
-              onClick={n.onClick ? event => n.onClick(n.node, event) : undefined}
-              onMouseEnter={n.onMouseEnter ? event => n.onMouseEnter(n.node, event) : undefined}
-              onMouseMove={n.onMouseMove ? event => n.onMouseMove(n.node, event) : undefined}
-              onMouseLeave={n.onMouseLeave ? event => n.onMouseLeave(n.node, event) : undefined}
+              fill={n.node.data.color}
+              onClick={event => {
+                return n?.onClick ? n?.onClick(n.node, event) : undefined;
+              }}
+              onMouseEnter={event => {
+                return n?.onMouseEnter ? n?.onMouseEnter(n.node, event) : undefined;
+              }}
+              onMouseMove={event => {
+                return n?.onMouseMove ? n?.onMouseMove(n.node, event) : undefined;
+              }}
+              onMouseLeave={event => {
+                return n?.onMouseLeave ? n?.onMouseLeave(n.node, event) : undefined;
+              }}
             ></animated.circle>
             <animated.text
               x={n.node.x + 7}
