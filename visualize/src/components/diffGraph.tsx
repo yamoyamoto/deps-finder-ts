@@ -143,7 +143,8 @@ export const App = () => {
               y={n.node.y}
               fontSize="10px"
             >
-              {n.node.id}
+              {n.node.data.name.match(/\/([^\/]*?)$/)}
+              {/*{n.node.id}*/}
             </animated.text>
             </>
         }}

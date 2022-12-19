@@ -361,6 +361,94 @@ export const networkNodeInputData: NetworkNodeInput[] = [
     deletionRate: 0,
     color: 'gray'
   },
+  {
+    id: '46',
+    name: '@storybook/react',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'blue'
+  },
+  {
+    id: '47',
+    name: '@storybook/addon-knobs',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'blue'
+  },
+  {
+    id: '48',
+    name: '@nivo/colors',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'blue'
+  },
+  {
+    id: '49',
+    name: 'packages/heatmap/src/HeatMap.tsx',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'gray'
+  },
+  {
+    id: '50',
+    name: 'packages/heatmap/src/types.ts',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'gray'
+  },
+  {
+    id: '51',
+    name: 'packages/heatmap/stories/data.ts',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'gray'
+  },
+  {
+    id: '52',
+    name: 'packages/heatmap/stories/CustomTooltip.tsx',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'gray'
+  },
+  {
+    id: '53',
+    name: 'packages/marimekko/src/hooks.ts',
+    size: 5,
+    additionRate: 0.0351758794,
+    deletionRate: 0.0527638191,
+    color: 'black'
+  },
+  {
+    id: '54',
+    name: 'lodash',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'blue'
+  },
+  {
+    id: '55',
+    name: 'd3-shape',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'blue'
+  },
+  {
+    id: '56',
+    name: 'packages/marimekko/src/types.ts',
+    size: 5,
+    additionRate: 0,
+    deletionRate: 0,
+    color: 'gray'
+  },
 ];
 
 export const networkLinkInputData: NetworkLinkInput[] = [
@@ -484,6 +572,141 @@ export const networkLinkInputData: NetworkLinkInput[] = [
   {
     source: "3",
     target: "45",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "46",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "47",
+    type: "add",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "48",
+    type: "add",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "49",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "50",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "51",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "52",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "6",
+    target: "5",
+    type: "add",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "41",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "54",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "55",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "37",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "48",
+    type: "stable",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "38",
+    type: "delete",
+    color: "black",
+    style: {
+      strokeDasharray: "",
+    },
+  },
+  {
+    source: "53",
+    target: "56",
     type: "stable",
     color: "black",
     style: {
